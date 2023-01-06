@@ -4,6 +4,17 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static int convertBinIntToDecInt(int binNum) {
+        int result = 0;
+        int bin = 1;
+        while (binNum > 0) {
+            result += (binNum % 10) * bin;
+            bin *= 2;
+            binNum /= 10;
+        }
+        return result;
+    }
+
     public static void encoder() {
         System.out.println("Input string:");
         Scanner s = new Scanner(System.in);
@@ -18,9 +29,7 @@ public class Main {
             String digit = Integer.toBinaryString(ch);
             int score = Integer.parseInt(digit);
             binaryDigit.append(String.format("%07d", score));
-//            System.out.printf("%c = %07d\n",ch, score);
         }
-//        System.out.printf("%s\n", binaryDigit);
         String temp = binaryDigit.toString();
         char[] binArrCh = temp.toCharArray();
         char print = '0';
@@ -45,16 +54,6 @@ public class Main {
         System.out.println();
     }
 
-    public static int convertBinIntToDecInt(int binNum) {
-        int result = 0;
-        int bin = 1;
-        while (binNum > 0) {
-            result += (binNum % 10) * bin;
-            bin *= 2;
-            binNum /= 10;
-        }
-        return result;
-    }
 
     public static void decoder() {
         System.out.println("Input encoded string:");
